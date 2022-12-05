@@ -17,15 +17,22 @@ class Game {
     }
   
     registerEvents() {
+      document.addEventListener('keydown', e=>{
+        if (e.key.toLocaleLowerCase() == this.currentSymbol.textContent.toLocaleLowerCase()) {
+          this.success();
+        } else {
+          this.fail();
+        }
+      });
       /*
-        TODO:
-        Написать обработчик события, который откликается
-        на каждый введённый символ.
-        В случае правильного ввода слова вызываем this.success()
-        При неправильном вводе символа - this.fail();
-       */
+      TODO:
+      Написать обработчик события, который откликается
+      на каждый введённый символ.
+      В случае правильного ввода слова вызываем this.success()
+      При неправильном вводе символа - this.fail();
+     */
     }
-  
+
     success() {
       this.currentSymbol.classList.add('symbol_correct');
       this.currentSymbol = this.currentSymbol.nextElementSibling;
