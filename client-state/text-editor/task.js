@@ -1,13 +1,16 @@
-const textarea = document.getElementById('editor'),
-      clear = document.getElementById('button');
+const prev_editor = document.getElementById('editor');
+prev_editor.outerHTML = prev_editor.outerHTML + '<button id="button">Очистить</button>';
 
-textarea.value = localStorage.getItem('text');
+const editor = document.getElementById('editor');
 
-textarea.addEventListener('input', () => {
-    localStorage.setItem('text', textarea.value);
+editor.value = localStorage.getItem('first');
+
+editor.addEventListener('keyup', () => {
+    localStorage.first = editor.value;
 });
 
+const button = document.getElementById('button');
 button.addEventListener('click', () => {
-    textarea.value = '';
-    localStorage.clear();
+    editor.value = '';
+    delete localStorage.first;
 });
